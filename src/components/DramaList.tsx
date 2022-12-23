@@ -7,7 +7,7 @@ const DramaList = (props: any) => {
         <>
             {props.kdramas.map((kdrama: any, index: any) => (
                 <div className='image-container d-flex justify-content-start m-3'>
-                    <img src={`https://image.tmdb.org/t/p/original/${kdrama.poster_path}`} alt="kdrama"></img>
+                    <img src={`https://image.tmdb.org/t/p/original/${kdrama.poster_path}`} alt={kdrama.name}></img>
                     <div className='overlay d-flex align-items-center justify-content-center' onClick={() => props.handleFavouritesClick(kdrama)}>
                         <FavouriteComponent />
                     </div>
