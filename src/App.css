@@ -3,7 +3,41 @@ body {
 	color: #ffffff;
 }
 
-.movie-app > .row {
+.kdrama-app > .row {
 	overflow-x: auto;
 	flex-wrap: nowrap;
+	overflow-y: hidden;
+}
+
+.image-container {
+	position: relative;
+	transition: transform 0.2s;
+	width: 375px;
+	height: 500px;
+}
+
+img {
+	width: 375px;
+	height: 100%;
+}
+
+.image-container:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+	opacity: 1;
+}
+
+.overlay {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.8);
+	width: 93.75%;
+	transition: 0.1s ease;
+	opacity: 0;
+	bottom: 0;
+	font-size: 20px;
+	padding: 20px;
+	text-align: center;
 }
