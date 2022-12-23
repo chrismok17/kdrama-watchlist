@@ -1,5 +1,4 @@
 import React from "react";
-import AddToFavourite from "./AddToFavourites";
 
 const DramaList = (props: any) => {
     const FavouriteComponent = props.favouriteComponent
