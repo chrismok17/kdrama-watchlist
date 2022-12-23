@@ -30,6 +30,10 @@ img {
 	opacity: 1;
 }
 
+.mr-2 {
+	padding-right: 7px;
+}
+
 .overlay {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.8);

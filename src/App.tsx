@@ -36,7 +36,6 @@ function App() {
 		const newFavouriteList = favourites.filter(
 			(favourite:object) => favourite !== kdrama
 		);
-
 		setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
 	};
