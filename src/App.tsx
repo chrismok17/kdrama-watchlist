@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import DramaList from './components/DramaList';
@@ -10,7 +10,7 @@ import RemoveFavourites from './components/RemoveFavourites';
 function App() {
   const [ kdramas, setKdramas ] = useState([])
   const [ searchValue, setSearchValue ] = useState('')
-  const [ favourites, setFavourites ] = useState([])
+  const [ favourites, setFavourites ] = useState<object[]>([])
   
   const getkdrama = async (searchValue: string) => {
     const url = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1&query=${searchValue}&include_adult=false`;
@@ -25,7 +25,8 @@ function App() {
   }; 
 
   const addFavouriteDrama = (kdrama: object) => {
-    const newFavouriteList: any = [...favourites, kdrama];
+    console.log(favourites)
+    const newFavouriteList: object[] = [...favourites, kdrama];
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
   };
