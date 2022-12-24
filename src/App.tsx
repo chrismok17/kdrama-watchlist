@@ -10,7 +10,7 @@ import RemoveFavourites from './components/RemoveFavourites';
 function App() {
   const [ kdramas, setKdramas ] = useState([])
   const [ searchValue, setSearchValue ] = useState('')
-  const [ favourites, setFavourites ] = useState<any[]>([])
+  const [ favourites, setFavourites ] = useState<object[]>([])
   
   const getkdrama = async (searchValue: string) => {
     const url = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1&query=${searchValue}&include_adult=false`;
@@ -26,7 +26,13 @@ function App() {
 
   const addFavouriteDrama = (kdrama: object) => {
     // console.log(favourites)
-    const newFavouriteList = [...favourites, kdrama];
+    const newFavouriteList: object[] = []
+    for (let i = 0; i< favourites.length; i++) {
+      
+      newFavouriteList.push(favourites[i])
+    }
+    newFavouriteList.push(kdrama)
+    
     // console.log(newFavouriteList)
     setFavourites(newFavouriteList);
     saveToLocalStorage(newFavouriteList);
