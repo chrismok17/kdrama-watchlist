@@ -12,8 +12,10 @@ body {
 .image-container {
 	position: relative;
 	transition: transform 0.2s;
-	width: 275px;
-	height: 400px;
+	width: 225px;
+	height: 300px;
+	max-width: 275px;
+	max-height: 400px;
 }
 
 img {
@@ -31,17 +33,17 @@ img {
 }
 
 .mr-2 {
-	padding-right: 7px;
+	padding-right: 6px;
 }
 
 .overlay {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.8);
-	width: 91.5%;
+	width: 89.5%;
 	transition: 0.1s ease;
 	opacity: 0;
 	bottom: 0;
 	font-size: 15px;
-	padding: 15px;
+	padding: 10px;
 	text-align: center;
 }
