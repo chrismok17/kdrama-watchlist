@@ -2,7 +2,7 @@
   "name": "kdrama-watchlist",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://chrismok17.github.io/kdrama-watchlist",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
