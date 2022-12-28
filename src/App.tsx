@@ -59,7 +59,7 @@ function App() {
       localStorage.getItem('react-kdrama-app-favourites') || '{}'
     );
     setFavourites(kdramafavourites)
-  })
+  }, [])
   
   return (
     <div className='container-fluid kdrama-app'>
