@@ -3,10 +3,8 @@ body {
 	color: #ffffff;
 }
 
-.kdrama-app > .row {
-	overflow-x: auto;
-	flex-wrap: nowrap;
-	overflow-y: hidden;
+.row {
+	padding: 15px;
 }
 
 .image-container {
