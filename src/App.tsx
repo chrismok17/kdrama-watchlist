@@ -8,26 +8,40 @@ import AddToFavourite from './components/AddToFavourites';
 import RemoveFavourites from './components/RemoveFavourites';
 
 function App() {
-  const [ kdramas, setKdramas ] = useState([])
+  const [ kdramas, setKdramas ] = useState<object[]>([])
   const [ searchValue, setSearchValue ] = useState('')
   const [ favourites, setFavourites ] = useState<object[]>([])
   
   const getkdrama = async (searchValue: string) => {
-    const url = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1&query=${searchValue}&include_adult=false`;
+      const url = `https://api.themoviedb.org/3/search/tv?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&page=1&query=${searchValue}&include_adult=false`;
     // const url = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=ko&query=${searchValue}&page=1&include_adult=false`
-      const response = await fetch(url);
-      const resJSON = await response.json();
-      
-      if (resJSON.results) {
-        const kdramas = resJSON.results.filter((kdrama: any) => kdrama.origin_country[0] === "KR")
-        setKdramas(kdramas)
-    }
+      // const url = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+      const actor_search = `https://api.themoviedb.org/3/search/person?api_key=${process.env.REACT_APP_MOVIEDB_KEY}&language=en-US&query=${searchValue}&page=1&include_adult=false`
+      const drama_response = await fetch(url);
+      const actor_response = await fetch(actor_search)
+      const resJSON = await drama_response.json();
+      const actor_resJSON = await actor_response.json();
+      const actor_data = actor_resJSON.results
+      const data = resJSON.results
+
+      let actor_dramas: object[] = []
+      let list_kdramas: object[] = []
+      if (actor_data) {
+        actor_data.forEach((element: any) => {
+          actor_dramas = (element.known_for.filter((kdrama: any) => kdrama.origin_country.includes("KR")))
+          setKdramas(actor_dramas)
+        })
+      }
+      if (data) {
+        list_kdramas = data.filter((kdrama: any) => kdrama.origin_country.includes( "KR"))
+        setKdramas(list_kdramas)
+      }
   }; 
 
   const addFavouriteDrama = (kdrama: object) => {
     // console.log(favourites)
     const newFavouriteList: object[] = []
-    for (let i = 0; i< favourites.length; i++) {
+    for (let i = 0; i < favourites.length; i++) {
       
       newFavouriteList.push(favourites[i])
     }
@@ -51,7 +65,7 @@ function App() {
 	};
 
   useEffect(() => {
-    getkdrama(searchValue);
+    getkdrama(searchValue).catch((err: any) => {});
   }, [searchValue]);
 
   useEffect(() => {
