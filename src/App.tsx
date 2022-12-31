@@ -26,15 +26,16 @@ function App() {
 
       let actor_dramas: object[] = []
       let list_kdramas: object[] = []
+
+      if (data) {
+        list_kdramas = data.filter((kdrama: any) => kdrama.origin_country.includes( "KR"))
+        setKdramas(list_kdramas)
+      }
       if (actor_data) {
         actor_data.forEach((element: any) => {
           actor_dramas = (element.known_for.filter((kdrama: any) => kdrama.origin_country.includes("KR")))
           setKdramas(actor_dramas)
         })
-      }
-      if (data) {
-        list_kdramas = data.filter((kdrama: any) => kdrama.origin_country.includes( "KR"))
-        setKdramas(list_kdramas)
       }
   }; 
 
