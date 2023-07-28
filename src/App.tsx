@@ -81,6 +81,7 @@ function App() {
   }, [favourites])
   
   return (
+    
     <div className='container-fluid kdrama-app'>
       <h1>Welcome to your Korean Drama watchlist!</h1>
       <div className='row d-flex align-items-center mt-4 mb-4'>
