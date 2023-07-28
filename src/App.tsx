@@ -8,7 +8,7 @@ import AddToFavourite from './components/AddToFavourites';
 import RemoveFavourites from './components/RemoveFavourites';
 
 function App() {
-  const [ kdramas, setKdramas ] = useState<object[]>([])
+  const [ kdramas, setKdramas ] = useState<object[]>(JSON.parse(localStorage.getItem("react-kdrama-app-kdramas") || "[]"))
   const [ searchValue, setSearchValue ] = useState('')
   const [ favourites, setFavourites ] = useState<object[]>([])
   
@@ -71,10 +71,14 @@ function App() {
 
   useEffect(() => {
     const kdramafavourites = JSON.parse(
-      localStorage.getItem('react-kdrama-app-favourites') || '{}'
+      localStorage.getItem('react-kdrama-app-favourites') || '[]'
     );
     setFavourites(kdramafavourites)
   }, [])
+
+  useEffect(() => {
+    localStorage.setItem("react-kdrama-app-favourites", JSON.stringify(favourites));
+  }, [favourites])
   
   return (
     <div className='container-fluid kdrama-app'>
