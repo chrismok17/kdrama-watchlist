@@ -4,13 +4,12 @@
 	background: #141414;
 	color: #ffffff;
 	font-size: 18px;
-}
-
-.root {
 	width: 100%;
 	margin: 0;
 	padding: 0;
+	overflow-x: hidden;
 }
+
 
 .drama-list-wrapper {
 	display: flex;
@@ -21,29 +20,65 @@
 }
 
 .card-group-wrapper {
-	display: flex;
-	justify-content: flex-start;
-	flex-wrap: wrap;
+	width: 100%;
+	border-radius: 5px;
 	margin: auto;
+	
 }
 
 .kdrama-card {
-	flex-shrink: 0;
-	max-width: 225px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #212121;
+	color: white;
 }
 
 .kdrama-card .card-title {
-	font-size: 0.9rem; /* Adjust the font size to your desired value */
+	color: wheat;
 }
 
-.kdrama-card > img {
-	max-height: 325px;
+.card-title {
+	padding: 0;
+}
+
+.card-body {
+	padding: 0;
+	margin: auto;
+}
+
+.btn-close, .bi-heart-fill {
+	margin-right: 15px;
+}
+
+.kdrama-card {
+	object-fit: cover;
+	flex-grow: 1;
+	width: 90%;
+	max-width: 90%;
+	max-height: 100%;
+}
+
+.image-size {
+	width: 100px;
+	height: 150px;
+	border-radius: 5px;
+}
+
+.kdrama-card-content {
+	padding: 10px;
 }
 
 .remove-favs {
 	font-size: 0.8rem;
 	padding: 10px;
 }
+
+.row-height {
+	height: 150px;
+}
+
+
 /* .kdrama-card {
 	width: 225px; 
 	height: 300px;

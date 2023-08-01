@@ -6,6 +6,7 @@ import DramaListHeading from './components/DramaListHeading';
 import SearchBox from './components/SearchBox';
 import AddToFavourite from './components/AddToFavourites';
 import RemoveFavourites from './components/RemoveFavourites';
+import RedCloseButton from './components/RedCloseButton';
 
 function App() {
   const [ kdramas, setKdramas ] = useState<object[]>(JSON.parse(localStorage.getItem("react-kdrama-app-kdramas") || "[]"))
@@ -101,7 +102,7 @@ function App() {
         <DramaList 
           kdramas={favourites} 
           handleFavouritesClick={removeFavouriteDrama} 
-          favouriteComponent={RemoveFavourites}/>
+          favouriteComponent={RedCloseButton}/>
       </div>
     </div>
   );
