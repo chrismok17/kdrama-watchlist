@@ -5,8 +5,8 @@ import DramaList from './components/DramaList';
 import DramaListHeading from './components/DramaListHeading';
 import SearchBox from './components/SearchBox';
 import AddToFavourite from './components/AddToFavourites';
-import RemoveFavourites from './components/RemoveFavourites';
 import RedCloseButton from './components/RedCloseButton';
+import { Row, Col } from 'react-bootstrap';
 
 function App() {
   const [ kdramas, setKdramas ] = useState<object[]>(JSON.parse(localStorage.getItem("react-kdrama-app-kdramas") || "[]"))
@@ -84,11 +84,14 @@ function App() {
   return (
     
     <div className='container-fluid kdrama-app'>
-      <h1>Welcome to your Korean Drama watchlist!</h1>
-      <div className='row d-flex align-items-center mt-4 mb-4'>
-        <DramaListHeading heading="Korean Dramas"/>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
-      </div>
+      <Row className='d-flex align-items-center mt-4 mb-4 justify-content-between'>
+          <Col xs='auto'>
+            <h1>Welcome to your Korean Drama Watchlist!</h1>
+          </Col>
+          <Col xs='auto'>
+            <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+          </Col>
+      </Row>
       <div className='row'>
         <DramaList 
           kdramas={kdramas} 

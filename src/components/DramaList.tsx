@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { Container, Row, Col, Card, Image, CloseButton } from "react-bootstrap";
-import RedCloseButton from "./RedCloseButton";
+import { Container, Row, Col, Card, Image } from "react-bootstrap";
 
 function DramaList(props: any) {
   const [selectedDrama, setSelectedDrama] = useState<any>(null);
@@ -21,6 +20,7 @@ function DramaList(props: any) {
   const handleFavClick = (kdrama: any) => {
     props.handleFavouritesClick(kdrama);
   };
+
 
   const handleDragEnd = (result: any) => {
     if (!result.destination) return;
@@ -42,7 +42,7 @@ function DramaList(props: any) {
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="d-flex flex-wrap justify-content-center"
+              className="d-flex flex-wrap justify-content-center items"
             >
               {kdramas.map((kdrama: any, index: number) => (
                 <Draggable
@@ -57,9 +57,12 @@ function DramaList(props: any) {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                        <Card className="kdrama-card m-4">
+                        <Card className="kdrama-card m-2 d-flex justify-content-center">
                             <Row className="row-height">
                                 <Col md={2}>
+                                    <div className="rank-number">
+                                      {index + 1}
+                                    </div>
                                     <Image
                                         src={`https://image.tmdb.org/t/p/original/${kdrama.poster_path}`}
                                         alt={kdrama.name}
